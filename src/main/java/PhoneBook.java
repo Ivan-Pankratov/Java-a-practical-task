@@ -45,10 +45,24 @@ public class PhoneBook {
 
 
     public static void main(String[] args) {
-
-        // Данные вводятся
         PhoneBook myPhoneBook = new PhoneBook();
+        // Данные вводятся из файла text.txt
+        System.out.println("Данные вводятся из файла text.txt и из самой программы");
 
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> list = new ArrayList<>();
+
+        while (true){
+            String data = scanner.nextLine();
+            if (data.equals("exit")) break;
+            list.add(data);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            String[] info = list.get(i).split(" ");
+            myPhoneBook.add(info[0], Integer.valueOf(info[1]));
+        }
+
+        // Данные вводятся из программы
         myPhoneBook.add("Ivanov", 123456);
         myPhoneBook.add("Ivanov", 654322);
         myPhoneBook.add("Petrov", 654321);
